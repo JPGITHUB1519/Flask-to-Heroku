@@ -1,0 +1,32 @@
+steps :
+
+	1- make App in heroku
+	2- make requeriments.txt file
+	3- Make Procfile for init when the server executes
+	4- heroku login
+	5- Init Git Repository
+		cd my-project/
+		git init
+		heroku git:remote -a <app_name_in_heroku>
+	6- Add .gitignore file to do not deploy virtual enviroment and put :
+		/venv
+	9- add runtime.txt to specify what python version use :
+		python-2.7.13
+	7- make a commit
+	8- deploy to heroku : git push heroku master
+
+	for database :
+		* create postgre db
+			heroku-postgresql:hobby-dev
+		* Once the database is setup we should promote it such that the DATABASE_URL environment variable will be set:
+			heroku pg:promote HEROKU_POSTGRESQL_COLOR
+		
+		* install psycog2
+			venv\Scripts\pip install psycopg2
+
+
+Videos :
+	Without Database :
+		https://www.youtube.com/watch?v=pmRT8QQLIqk
+
+
