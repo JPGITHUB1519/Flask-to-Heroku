@@ -18,11 +18,30 @@ steps :
 	for database :
 		* create postgre db
 			heroku-postgresql:hobby-dev
-		* Once the database is setup we should promote it such that the DATABASE_URL environment variable will be set:
-			heroku pg:promote HEROKU_POSTGRESQL_COLOR
-		
+
 		* install psycog2
 			venv\Scripts\pip install psycopg2
+
+		* install flask-sqlalchemy
+		* in the config .py
+			put database as SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+		* create create_database.py to create database and insert records
+			from app import db
+			from models import Post
+
+			# create database and tables
+			db.create_all()
+
+			#insert
+
+			db.session.add(Post(title="The Chess Flamenguist", description="A new Chess Legen has born"))
+			db.session.add(Post(title="FSND", description="Full Stack Web Developer Nanodegree"))
+
+			db.session.commit()
+			
+		*
+
 
 
 Videos :
